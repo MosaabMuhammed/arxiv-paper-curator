@@ -3,8 +3,13 @@ name = "arxiv-paper-curator"
 version = "0.1.0"
 description = "A tool for curating and managing arXiv papers"
 readme = "README.md"
-requires-python = ">=3.12,<3.13"
-dependencies = []
+requires-python = ">=3.12,<=3.14"
+dependencies = [
+    "fastapi==0.121.1",
+    "loguru==0.7.3",
+    "pydantic==2.12.4",
+    "pydantic-settings==2.11.0",
+]
 
 [dependency-groups]
 dev = [
