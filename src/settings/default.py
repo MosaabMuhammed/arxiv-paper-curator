@@ -1,8 +1,8 @@
 from typing import List, Union
 
-from ollama_settings import OllamaSettings
-from opensearch_settings import OpenSearchSettings
-from postgres_settings import PostegresSettings
+from ollama import OllamaSettings
+from opensearch import OpenSearchSettings
+from postgres import PostegresSettings
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
