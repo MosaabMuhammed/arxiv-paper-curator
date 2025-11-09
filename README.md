@@ -1,5 +1,11 @@
 # Arxiv Paper Curator
 
+## Setup
+```bash
+uv python install 3.12
+uv init
+```
+
 ## What you’ll build (Technical Breakdown)
 You will build from scratch - a fully local with API integration, production-grade RAG system with:
 
