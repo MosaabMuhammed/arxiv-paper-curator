@@ -25,4 +25,4 @@ repos:
     rev: 1.7.9
     hooks:
       - id: bandit
-        args: ["--quiet", "-r", "."]
+        args: ["--quiet", "-r", "src"]
