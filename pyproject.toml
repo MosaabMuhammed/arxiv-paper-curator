@@ -10,3 +10,12 @@ dependencies = []
 dev = [
     "pre-commit>=4.4.0",
 ]
+
+
+[tool.ruff]
+line-length = 130
+exclude = ["notebooks/**", ".venv/**"]
+src = ["src", "tests"]
+lint.select = [
+  "I",
+]

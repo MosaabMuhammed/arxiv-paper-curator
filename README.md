@@ -1,11 +1,5 @@
 # Arxiv Paper Curator
 
-## Setup
-```bash
-uv python install 3.12
-uv init
-```
-
 ## What you’ll build (Technical Breakdown)
 You will build from scratch - a fully local with API integration, production-grade RAG system with:
 
@@ -73,3 +67,20 @@ You will build from scratch - a fully local with API integration, production-gra
 ## Phase 5: Full RAG system
 
 ## Phase 6: Production optimization
+
+
+---
+## Initial Setup
+### 1. Install Python and UV package manager
+```bash
+uv python install 3.12
+uv init
+```
+
+### 2. Install pre-commit hooks
+```bash
+uv add --dev pre-commit
+
+# after adding the .pre-comit-config.yaml
+pre-commit install
+```
