@@ -22,3 +22,6 @@ class DefaultSettings(BaseSettings):
 def get_settings() -> DefaultSettings:
     """Get application settings."""
     return DefaultSettings()
+
+
+default_settings = DefaultSettings()

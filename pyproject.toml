@@ -9,6 +9,7 @@ dependencies = [
     "loguru==0.7.3",
     "pydantic==2.12.4",
     "pydantic-settings==2.11.0",
+    "sqlalchemy==2.0.44",
 ]
 
 [dependency-groups]
@@ -24,3 +25,7 @@ src = ["src", "tests"]
 lint.select = [
   "I",
 ]
+
+[tool.mypy]
+packages = ["src"]
+explicit_package_bases = true
