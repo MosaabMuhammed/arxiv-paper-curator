@@ -1,4 +1,4 @@
-from .default import default_settings, get_settings
+from .default import DefaultSettings, default_settings, get_settings
 from .ollama import OllamaSettings
 from .opensearch import OpenSearchSettings
 from .postgres import PostegresSettings

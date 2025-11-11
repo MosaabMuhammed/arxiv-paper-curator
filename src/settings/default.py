@@ -1,4 +1,4 @@
-from typing import List, Union
+from functools import lru_cache
 
 from ollama import OllamaSettings
 from opensearch import OpenSearchSettings
@@ -19,6 +19,7 @@ class DefaultSettings(BaseSettings):
     OPENSEARCH: OpenSearchSettings
 
 
+@lru_cache
 def get_settings() -> DefaultSettings:
     """Get application settings."""
     return DefaultSettings()
