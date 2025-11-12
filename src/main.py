@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from loguru import logger
+
 from src.db.factory import make_database
 from src.settings import default_settings
 
@@ -39,9 +40,3 @@ app = FastAPI(
     root_path="/api/v1",
     lifespan=lifespan,
 )
-
-if __name__ == "__main__":
-    import uvicorn
-
-    host = "0.0.0.0" if default_settings.ENVIRONMENT == "production" else "127.0.0.1"  # nosec B104
-    uvicorn.run(app, port=8000, host=host)  # nosec B104
