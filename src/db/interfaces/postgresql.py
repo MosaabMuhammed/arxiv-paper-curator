@@ -7,6 +7,7 @@ from sqlalchemy.engine import Engine
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Session, sessionmaker
+
 from src.db.interfaces.base import BaseDatabase
 from src.settings import default_settings
 
@@ -43,7 +44,7 @@ class PostgreSQLDB(BaseDatabase):
                 self.database_url,
                 echo=self.echo_sql,
                 pool_size=self.pool_size,
-                poo_pre_ping=True,  # Verify connections before use
+                pool_pre_ping=True,  # Verify connections before use
             )
 
             self.session_factory = sessionmaker(bind=self.engine, expire_on_commit=False)
