@@ -2,6 +2,7 @@ from typing import Annotated, Generator
 
 from fastapi import Depends, Request
 from sqlalchemy.orm import Session
+
 from src.db.interfaces.base import BaseDatabase
 from src.settings import DefaultSettings, get_settings
 
@@ -13,7 +14,7 @@ def get_request_settings(request: Request) -> DefaultSettings:
 
 def get_database(request: Request) -> BaseDatabase:
     """Get database from the request state."""
-    return request.app.state.database
+    return request.app.state.db
 
 
 def get_db_session(database: Annotated[BaseDatabase, Depends(get_database)]) -> Generator[Session, None, None]:

@@ -16,9 +16,14 @@ async def lifespan(app: FastAPI):
 
     app.state.settings = default_settings
 
-    db = make_database()
-    app.state.db = db
-    logger.info("Database connected!")
+    # Initialize database with error handling
+    try:
+        db = make_database()
+        app.state.db = db
+        logger.info("Database connected!")
+    except Exception as e:
+        logger.error(f"Failed to initialize database: {e}")
+        raise
 
     # Placeholder for future weeks
     app.state.pdf_parser_service = None
@@ -29,7 +34,12 @@ async def lifespan(app: FastAPI):
     yield
 
     # Cleanup
-    db.teardown()
+    try:
+        db.teardown()
+        logger.info("Database connection closed")
+    except Exception as e:
+        logger.error(f"Error during database cleanup: {e}")
+
     logger.info("API shutdown complete")
 
 
