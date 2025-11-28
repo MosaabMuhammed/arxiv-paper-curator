@@ -5,9 +5,8 @@ from fastapi import FastAPI
 from loguru import logger
 
 from src.db.factory import make_database
+from src.routers import ask_router, papers_router, ping_router
 from src.settings import default_settings
-
-# from src.routers import ask, papers, ping
 
 
 @asynccontextmanager
@@ -50,3 +49,8 @@ app = FastAPI(
     root_path="/api/v1",
     lifespan=lifespan,
 )
+
+# Include routers
+app.include_router(ping_router.router)
+app.include_router(papers_router.router)
+app.include_router(ask_router.router)
