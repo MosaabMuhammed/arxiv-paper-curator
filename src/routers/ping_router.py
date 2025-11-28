@@ -59,7 +59,7 @@ async def health_check(settings: SettingsDep, database: DatabaseDep):
 
     # Test Ollama service connectivity
     try:
-        ollama_client = OllamaService(settings)
+        ollama_client = OllamaService()
         ollama_health = await ollama_client.health_check()
         services["ollama"] = ServiceStatus(status=ollama_health["status"], message=ollama_health["message"])
         if ollama_health["status"] != "healthy":
@@ -70,8 +70,8 @@ async def health_check(settings: SettingsDep, database: DatabaseDep):
 
     return HealthResponse(
         status=overall_status,
-        version=settings.app_version,
-        environment=settings.environment,
-        service_name=settings.service_name,
+        version=settings.APP_VERSION,
+        environment=settings.ENVIRONMENT,
+        service_name=settings.SERVICE_NAME,
         services=services,
     )

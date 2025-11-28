@@ -1,6 +1,6 @@
-from .default import DefaultSettings, default_settings, get_settings
-from .ollama import OllamaSettings
-from .opensearch import OpenSearchSettings
-from .postgres import PostegresSettings
+from .ollama_settings import OllamaSettings
+from .opensearch_settings import OpenSearchSettings
+from .postgres_settings import PostegresSettings
+from .settings import Settings, get_settings, settings
 
-__all__ = ["DefaultSettings", "OllamaSettings", "OpenSearchSettings", "PostegresSettings", "default_settings", "get_settings"]
+__all__ = ["Settings", "OllamaSettings", "OpenSearchSettings", "PostegresSettings", "settings", "get_settings"]

@@ -3,14 +3,14 @@ from typing import Dict
 import httpx
 from loguru import logger
 
-from src.settings import DefaultSettings
+from src.settings import settings
 
 
 class OllamaService:
     """Minial Ollama service"""
 
-    def __init__(self, settings: DefaultSettings):
-        self.base_url = settings.OLLAMA_HOST
+    def __init__(self):
+        self.base_url = settings.OLLAMA.HOST
 
     async def health_check(self) -> Dict[str, str]:
         """Check if Ollama service is available."""

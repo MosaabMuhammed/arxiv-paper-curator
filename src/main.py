@@ -6,14 +6,14 @@ from loguru import logger
 
 from src.db.factory import make_database
 from src.routers import ask_router, papers_router, ping_router
-from src.settings import default_settings
+from src.settings import settings
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Starting RAG API...")
 
-    app.state.settings = default_settings
+    app.state.settings = settings
 
     # Initialize database with error handling
     try:
@@ -45,7 +45,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="arXiv Paper Curator API",
     description="Personal arXiv CS.AI paper curator with RAG cababilities",
-    version=default_settings.APP_VERSION,
+    version=settings.APP_VERSION,
     root_path="/api/v1",
     lifespan=lifespan,
 )

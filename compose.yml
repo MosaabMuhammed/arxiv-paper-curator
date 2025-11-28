@@ -20,8 +20,8 @@ services:
       - .env
     environment:
       # Container-specific overrides (for inter-service communication)
-      - OPENSEARCH_HOST=http://opensearch:9200
-      - OLLAMA_HOST=http://ollama:11434
+      - OPENSEARCH__HOST=http://opensearch:9200
+      - OLLAMA__HOST=http://ollama:11434
       - POSTGRES__DATABASE_URL=postgresql+psycopg2://rag_user:rag_password@postgres:5432/rag_db
     networks:
       - rag-network
@@ -91,8 +91,8 @@ services:
       - PYTHONPATH=/opt/airflow/src
       # Container hostnames for Airflow
       - POSTGRES__DATABASE_URL=postgresql+psycopg2://rag_user:rag_password@postgres:5432/rag_db
-      - OPENSEARCH_HOST=http://opensearch:9200
-      - OLLAMA_HOST=http://ollama:11434
+      - OPENSEARCH__HOST=http://opensearch:9200
+      - OLLAMA__HOST=http://ollama:11434
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - airflow_logs:/opt/airflow/logs
@@ -130,10 +130,10 @@ services:
     image: postgres:16-alpine
     container_name: rag-postgres
     environment:
-      - POSTGRES_DB=rag_db
-      - POSTGRES_USER=rag_user
-      - POSTGRES_PASSWORD=rag_password
-      - POSTGRES_HOST_AUTH_METHOD=password
+      - POSTGRES__DB=rag_db
+      - POSTGRES__USER=rag_user
+      - POSTGRES__PASSWORD=rag_password
+      - POSTGRES__HOST_AUTH_METHOD=password
       - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
       - "5432:5432"

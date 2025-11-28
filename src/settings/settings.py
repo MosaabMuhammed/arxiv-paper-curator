@@ -2,12 +2,12 @@ from functools import lru_cache
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from .ollama import OllamaSettings
-from .opensearch import OpenSearchSettings
-from .postgres import PostegresSettings
+from .ollama_settings import OllamaSettings
+from .opensearch_settings import OpenSearchSettings
+from .postgres_settings import PostegresSettings
 
 
-class DefaultSettings(BaseSettings):
+class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore", frozen=True, env_nested_delimiter="__")
 
     APP_VERSION: str = "0.1.0"
@@ -21,9 +21,9 @@ class DefaultSettings(BaseSettings):
 
 
 @lru_cache
-def get_settings() -> DefaultSettings:
+def get_settings() -> Settings:
     """Get application settings."""
-    return DefaultSettings()
+    return Settings()
 
 
-default_settings = DefaultSettings()
+settings = Settings()

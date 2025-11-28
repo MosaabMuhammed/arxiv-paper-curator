@@ -9,7 +9,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Session, sessionmaker
 
 from src.db.interfaces.base import BaseDatabase
-from src.settings import default_settings
+from src.settings import settings
 
 Base = declarative_base()
 
@@ -19,10 +19,10 @@ class PostgreSQLDB(BaseDatabase):
 
     def __init__(
         self,
-        database_url: str = default_settings.POSTGRES.DATABASE_URL,
-        echo_sql: bool = default_settings.POSTGRES.ECHO_SQL,
-        pool_size: int = default_settings.POSTGRES.POOL_SIZE,
-        max_overflow: int = default_settings.POSTGRES.MAX_OVERFLOW,
+        database_url: str = settings.POSTGRES.DATABASE_URL,
+        echo_sql: bool = settings.POSTGRES.ECHO_SQL,
+        pool_size: int = settings.POSTGRES.POOL_SIZE,
+        max_overflow: int = settings.POSTGRES.MAX_OVERFLOW,
     ):
         self.database_url = database_url
         self.echo_sql = echo_sql

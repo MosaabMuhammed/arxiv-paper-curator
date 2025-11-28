@@ -4,10 +4,10 @@ from fastapi import Depends, Request
 from sqlalchemy.orm import Session
 
 from src.db.interfaces.base import BaseDatabase
-from src.settings import DefaultSettings, get_settings
+from src.settings import Settings, get_settings
 
 
-def get_request_settings(request: Request) -> DefaultSettings:
+def get_request_settings(request: Request) -> Settings:
     """Get settings from the request state."""
     return request.app.state.settings
 
@@ -43,7 +43,7 @@ def get_llm_service(request: Request):
 
 
 # Dependency type aliases for better type hints
-SettingsDep = Annotated[DefaultSettings, Depends(get_settings)]
+SettingsDep = Annotated[Settings, Depends(get_settings)]
 DatabaseDep = Annotated[BaseDatabase, Depends(get_database)]
 SessionDep = Annotated[Session, Depends(get_db_session)]
 PDFParserServiceDep = Annotated[object, Depends(get_pdf_parser_service)]

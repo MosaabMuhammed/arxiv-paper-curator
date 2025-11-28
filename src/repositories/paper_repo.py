@@ -1,7 +1,8 @@
 from typing import List, Optional
 from uuid import UUID
 
-from sqlalchemy import Session, select
+from sqlalchemy import select
+from sqlalchemy.orm import Session
 
 from src.models import Paper
 from src.schemas import PaperCreate

@@ -2,10 +2,10 @@ from fastapi import APIRouter
 
 from src.schemas import AskRequest, AskResponse, PaperSource
 
-router = APIRouter(prefix="/questions", tag=["question"])
+router = APIRouter(prefix="/questions", tags=["question"])
 
 
-@router.get("/", response_model=AskResponse)
+@router.post("/", response_model=AskResponse)
 async def ask_question(request: AskRequest) -> AskResponse:
     mock_sources = [
         PaperSource(
